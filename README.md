@@ -14,11 +14,11 @@
 
 Welcome to Trybe. This is our [Makers Academy](https://makers.tech/) final project which we have built in 8 days. <br>
 
-Trybe is an app that helps to build and manage a community in the supporting of achieving bespoke goals. The idea is a group of friends, your TRYBE (TM) will help motivate you with encouragement, while the app also allows you to track and share progress. We concieved it as a type of inverse to the Strave style of tracking, in that your network is small and private, and goals can range from things you would be proud to share, to things you may want to stay discreet about. 
+Trybe is an app that helps to build and manage a community in the supporting of achieving bespoke goals. The idea is a group of friends, your TRYBE (TM) will help motivate you with encouragement, while the app also allows you to track and share progress. We concieved it as a type of inverse to the Strava style of tracking, in that your network is small and private, and goals can range from things you would be proud to share, to things you may want to stay discreet about. 
 
 ## Instructions for use of proof of concept
 
-At the point of writing, TRYBE is still in development, and will need to be run via and Expo client app in order to experience it. It will require the full codebase, and confidence with VS Code and terminal. 
+At the point of writing, TRYBE is still in development, and will need to be run via an Expo client app in order to experience it. It will require the full codebase, and confidence with VS Code and terminal. 
 
 Open a terminal in the TrybeFrontend folder, and excecute the following:
 
@@ -40,7 +40,7 @@ Then run
 npm install
 ```
 
-You will now need to download the expo app from App Store of the Google Play Store.
+You will now need to download the expo app from App Store or the Google Play Store.
 
 Start the front end 'server'.
 
