@@ -19,7 +19,7 @@ const AuthNavigator = () => {
         headerShown: false,
       }}
     >
-      {user.auth_token ? (
+      {user && user.auth_token ? (
         <Stack.Screen name="Home" component={MainNavigator} />
       ) : (
         <>

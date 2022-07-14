@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Keyboard } from "react-native";
 
 import { TextInput, Button } from "react-native-paper";
 
@@ -19,6 +19,7 @@ const LoginScreen = ({ navigation }) => {
       createAlert("Error!", "password field cannot be empty");
     } else {
       login(username, password);
+      Keyboard.dismiss();
     }
   };
 

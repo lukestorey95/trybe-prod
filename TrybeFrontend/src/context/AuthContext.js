@@ -18,8 +18,11 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     const user = await loginUser(username, password);
-    setUserInfo(user);
-    AsyncStorage.mergeItem("user", JSON.stringify(user));
+
+    if (user) {
+      setUserInfo(user);
+      AsyncStorage.mergeItem("user", JSON.stringify(user));
+    }
   };
 
   const logout = async () => {
