@@ -47,13 +47,16 @@ Start the front end 'server'.
 ```
 npm start
 ```
+
+Lastly you will need to create an `environment.js` file and have the Twilio details in it. 
+
 And use your phone to follow the QR code which will set up the app in Expo. Ensure that both your computer and your phone are on the same wireless network.
 
 You will now be able to use our app!
 
 ## Backend
 
-Whatever the backend situation is, it needs to be documented here. 
+The Trybe backend is built using a Python based web framework called the Django Rest Framework and can be found [here](https://github.com/LGretzk/trybe_backend)
 
 ## Design, concept and build
 
@@ -88,6 +91,8 @@ Maintaining visibility of whether our code is working, and what the consequences
 ![diagram of front end structure](./images/app_diagram.jpg)
 
 ## Video of app working 
+
+[![Video of Trybe](./images/videoLinkImage.jpg)](https://www.youtube.com/watch?v=qts_DSZA9IA "Trybe Video")
 
 
 
