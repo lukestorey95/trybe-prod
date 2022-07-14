@@ -30,6 +30,7 @@ const LoginScreen = ({ navigation }) => {
           style={styles.input}
           value={username}
           placeholder="Enter username"
+          autoCapitalize="none"
           onChangeText={(text) => setUsername(text)}
         />
 

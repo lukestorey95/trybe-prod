@@ -147,6 +147,8 @@ function GoalDetailScreen(props) {
 
       <View>
         <TextInput
+          keyboardType="email-address"
+          autoCapitalize="none"
           style={styles.input}
           value={email}
           placeholder="enter supporter email"

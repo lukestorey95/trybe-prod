@@ -32,6 +32,8 @@ const RegisterScreen = ({ navigation }) => {
       <Logo />
       <View style={styles.wrapper}>
         <TextInput
+          keyboardType="email-address"
+          autoCapitalize="none"
           style={styles.input}
           value={email}
           placeholder="Enter email"
@@ -42,6 +44,7 @@ const RegisterScreen = ({ navigation }) => {
           style={styles.input}
           value={username}
           placeholder="Enter username"
+          autoCapitalize="none"
           onChangeText={(text) => setUsername(text)}
         />
 
