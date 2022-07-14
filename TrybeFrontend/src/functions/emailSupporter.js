@@ -3,6 +3,11 @@ const { SENDGRID_KEY, SENDGRID_EMAIL } = getEnvVars();
 
 const emailSupporter = async (email, goal) => {
   const url = `https://api.sendgrid.com/v3/mail/send`;
+
+  const goal_description = goal.goal_description.replace(/./, (c) =>
+    c.toLowerCase()
+  );
+
   const data = {
     personalizations: [
       { to: [{ email: `${email}` }], subject: "Please join my Trybe" },
@@ -10,7 +15,7 @@ const emailSupporter = async (email, goal) => {
     content: [
       {
         type: "text/plain",
-        value: `I am trying to ${goal.goal_description} and would love your support!`,
+        value: `I am trying to ${goal_description} and would love your support!`,
       },
     ],
     from: { email: `${SENDGRID_EMAIL}`, name: "Trybe" },

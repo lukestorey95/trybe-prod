@@ -23,7 +23,6 @@ import {
 import { AuthContext } from "../context/AuthContext";
 import { createAlert } from "../functions/createAlert";
 
-import emailSupporter from "../functions/emailSupporter";
 import inviteSupporter from "../functions/inviteSupporter";
 import { loadMessages, sendMessage } from "../../store/goals/messages.actions";
 
@@ -71,8 +70,7 @@ function GoalDetailScreen(props) {
 
   const handleSubmitSupporter = () => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      emailSupporter(email, goal);
-      inviteSupporter(user.auth_token, email, goal.id);
+      inviteSupporter(user.auth_token, email, goal);
       setEmail(null);
       Keyboard.dismiss();
     } else {
