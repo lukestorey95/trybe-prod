@@ -1,6 +1,12 @@
 # TRYBE
 
+<p float="left">
+<img src="./images/appLogin.png" width="200" alt="picture of the app">
 <img src="./images/theApp.png" width="200" alt="picture of the app">
+</p>
+
+<a href="https://www.youtube.com/watch?v=qts_DSZA9IA"><img src="./images/videoLinkImage.jpg" alt="Video of Trybe" width="500"></a>
+
 
 ## Team
 
@@ -93,6 +99,7 @@ Maintaining visibility of whether our code is working, and what the consequences
 ## Video of app working 
 
 [![Video of Trybe](./images/videoLinkImage.jpg)](https://www.youtube.com/watch?v=qts_DSZA9IA "Trybe Video")
+
 
 
 
