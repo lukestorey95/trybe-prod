@@ -1,6 +1,6 @@
 # TRYBE
 
-![picture of the app](./images/theApp.jpg)
+![picture of the app](./images/theApp.png)
 
 ## Team
 
