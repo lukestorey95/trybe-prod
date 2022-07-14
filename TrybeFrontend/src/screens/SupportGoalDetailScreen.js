@@ -1,8 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
-import { SafeAreaView, StyleSheet, Text, View, Keyboard } from "react-native";
-import { sendMessage } from "../../store/goals/messages.actions";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Keyboard,
+  FlatList,
+} from "react-native";
+import { sendMessage, loadMessages } from "../../store/goals/messages.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, TextInput, Card, Title } from "react-native-paper";
+import {
+  Button,
+  TextInput,
+  Card,
+  Title,
+  Avatar,
+  IconButton,
+} from "react-native-paper";
 import { AuthContext } from "../context/AuthContext";
 import { createAlert } from "../functions/createAlert";
 
@@ -16,15 +30,25 @@ function SupportGoalDetailScreen(props) {
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState(null);
 
-  useEffect(() => {}, [dispatch]);
+  const messages = useSelector((state) => state.messages);
+
+  useEffect(() => {
+    function load() {
+      dispatch(loadMessages({ token: user.auth_token, id: id }));
+    }
+    load();
+  }, [dispatch]);
 
   const handleSendSupport = (message) => {
-    // console.log(message);
-    dispatch(
-      sendMessage({ token: user.auth_token, id: goal.id, text: message })
-    );
-    setMessage(null);
-    Keyboard.dismiss();
+    if (message) {
+      dispatch(
+        sendMessage({ token: user.auth_token, id: goal.id, text: message })
+      );
+      setMessage(null);
+      Keyboard.dismiss();
+    } else {
+      createAlert("Invalid Input!", "Field cannot be empty");
+    }
   };
 
   return (
@@ -36,7 +60,7 @@ function SupportGoalDetailScreen(props) {
         </Card.Content>
       </Card>
 
-      <View>
+      <View style={{ marginTop: 5 }}>
         <TextInput
           style={styles.input}
           value={message}
@@ -52,6 +76,26 @@ function SupportGoalDetailScreen(props) {
           Send support
         </Button>
       </View>
+
+      <Title style={styles.text}>Support for this goal</Title>
+      <FlatList
+        data={messages}
+        keyExtractor={({ id }, index) => id}
+        renderItem={({ item }) => (
+          <Card style={styles.cardStyle}>
+            <Card.Title
+              subtitle={item.sender_username}
+              left={(props) => (
+                <Avatar.Icon {...props} icon="face-man-profile" />
+              )}
+            />
+            <Card.Content>
+              <Text>{item.message}</Text>
+            </Card.Content>
+          </Card>
+        )}
+        ListFooterComponent={() => <View style={{ padding: 150 }}></View>}
+      />
     </SafeAreaView>
   );
 }
@@ -62,7 +106,11 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
-    fontSize: 50,
+    marginTop: 20,
+    marginBottom: 10,
+    fontSize: 20,
+    textAlign: "center",
+    padding: 10,
   },
   row: {
     flexDirection: "row",
@@ -79,7 +127,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   cardStyle: {
-    padding: 10,
+    marginBottom: 10,
   },
   update: {
     marginBottom: 20,
