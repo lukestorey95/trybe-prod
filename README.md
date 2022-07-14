@@ -1,9 +1,9 @@
 # TRYBE
 
-<p float="left">
+<div float="left">
 <img src="./images/appLogin.png" width="200" alt="picture of the app">
 <img src="./images/theApp.png" width="200" alt="picture of the app">
-</p>
+</div>
 
 <a href="https://www.youtube.com/watch?v=qts_DSZA9IA"><img src="./images/videoLinkImage.jpg" alt="Video of Trybe" width="500"></a>
 
@@ -94,7 +94,7 @@ In planning for the project we conducted an impact/effort assessment of the prop
 
 At the beginning of the project we sketched a wireframe of the MVP to help us to visualise the final project. 
 
-![sketch wireframe of design](./images/wireframe.jpg)
+<img src="./images/wireframe.jpg" width="300" alt="sketch wireframe of design">
 
 ## App structure diagram
 
