@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from "react";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 import styles from "./ViewGoals.component.style";
 import { supporterLoadGoals } from "../../store/goals/supporterGoals.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Card } from "react-native-paper";
+import { Card, Title } from "react-native-paper";
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -15,7 +15,7 @@ function ViewSupporterGoals(props) {
 
   useEffect(() => {
     async function load() {
-      await dispatch(supporterLoadGoals(user.auth_token));
+      dispatch(supporterLoadGoals(user.auth_token));
       setLoading(false);
     }
     load();
@@ -30,19 +30,27 @@ function ViewSupporterGoals(props) {
       {isLoading ? (
         <Text>Loading...</Text>
       ) : supporterGoals.length > 0 ? (
-        <FlatList
-          data={supporterGoals}
-          keyExtractor={({ id }, index) => id}
-          renderItem={({ item }) => (
-            <Card style={styles.cardStyle} onPress={() => clickedItem(item.id)}>
-              <Card.Content>
-                <Text>{item.goal_description}</Text>
-              </Card.Content>
-            </Card>
-          )}
-        />
+        <>
+          <Title style={styles.text}>Goals from your Trybe</Title>
+          <FlatList
+            data={supporterGoals}
+            keyExtractor={({ id }, index) => id}
+            renderItem={({ item }) => (
+              <Card
+                style={styles.cardStyle}
+                onPress={() => clickedItem(item.id)}
+              >
+                <Card.Content>
+                  <Text>{item.goal_description}</Text>
+                </Card.Content>
+              </Card>
+            )}
+          />
+        </>
       ) : (
-        <Text>You are not currently supporting anyone else's goals</Text>
+        <Title style={styles.text}>
+          You are not currently supporting anyone else's goals
+        </Title>
       )}
     </View>
   );

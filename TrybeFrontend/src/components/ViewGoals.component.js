@@ -3,7 +3,7 @@ import { FlatList, View, Text } from "react-native";
 import styles from "./ViewGoals.component.style";
 import { loadGoals } from "../../store/goals/goals.actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, ProgressBar } from "react-native-paper";
+import { Card, ProgressBar, Title } from "react-native-paper";
 
 import { AuthContext } from "../context/AuthContext";
 
@@ -29,7 +29,7 @@ function ViewGoals(props) {
     <View style={styles.wrapper}>
       {isLoading ? (
         <Text>Loading...</Text>
-      ) : (
+      ) : goals.length > 0 ? (
         <FlatList
           data={goals}
           keyExtractor={({ id }, index) => id}
@@ -46,6 +46,10 @@ function ViewGoals(props) {
           )}
           ListFooterComponent={() => <View style={{ padding: 70 }}></View>}
         />
+      ) : (
+        <Title style={styles.text}>
+          You don't have any goals, why don't you add one above?
+        </Title>
       )}
     </View>
   );

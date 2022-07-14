@@ -15,4 +15,10 @@ export default StyleSheet.create({
     marginBottom: 10,
     padding: 10,
   },
+  text: {
+    marginBottom: 10,
+    fontSize: 20,
+    textAlign: "center",
+    padding: 10,
+  },
 });

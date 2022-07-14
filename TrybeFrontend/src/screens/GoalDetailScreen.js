@@ -101,13 +101,27 @@ function GoalDetailScreen(props) {
   return (
     <SafeAreaView style={styles.viewStyle}>
       <Card style={styles.cardStyle}>
+        <Card.Title
+          title="Goal"
+          right={() => (
+            <IconButton
+              icon="plus-circle-outline"
+              size={25}
+              onPress={() => {
+                updateProgress();
+              }}
+            />
+          )}
+        />
         <Card.Content>
-          <Title>Goal</Title>
           <Text>{goal.goal_description}</Text>
-          <Button onPress={() => updateProgress()}>+</Button>
-          <ProgressBar progress={parseFloat(goal.progress)} />
+          <ProgressBar
+            progress={parseFloat(goal.progress)}
+            style={{ marginTop: 10 }}
+          />
         </Card.Content>
       </Card>
+
       <View style={styles.row}>
         <Button icon="pencil" onPress={() => setShouldShow(!shouldShow)}>
           Update Goal
@@ -186,7 +200,7 @@ function GoalDetailScreen(props) {
         </Dialog>
       </Portal>
 
-      <Text style={styles.text}>Encouragement from your Trybe</Text>
+      <Title style={styles.text}>Encouragement from your Trybe</Title>
       <FlatList
         data={messages}
         keyExtractor={({ id }, index) => id}
