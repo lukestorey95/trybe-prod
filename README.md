@@ -86,22 +86,21 @@ Maintaining visibility of whether our code is working, and what the consequences
 
 ## Impact Effort Assessment
 
+In planning for the project we conducted an impact/effort assessment of the proposed features to help us to prioritise our workload and build our sprint backload.
+
 ![impact effor assessment graph](./images/impact_effort.jpg)
 
 ## Wireframe
+
+At the beginning of the project we sketched a wireframe of the MVP to help us to visualise the final project. 
 
 ![sketch wireframe of design](./images/wireframe.jpg)
 
 ## App structure diagram
 
+This diagram shows the structure of the frontend. 
+
 ![diagram of front end structure](./images/app_diagram.jpg)
-
-## Video of app working 
-
-[![Video of Trybe](./images/videoLinkImage.jpg)](https://www.youtube.com/watch?v=qts_DSZA9IA "Trybe Video")
-
-
-
 
 
 
