@@ -10,7 +10,7 @@ async function deleteGoal(token, id) {
       Authorization: `Token ${token}`,
     },
   });
-  console.log("do we even hit here?");
+  // console.log("do we even hit here?");
   return { id: id };
 }
 

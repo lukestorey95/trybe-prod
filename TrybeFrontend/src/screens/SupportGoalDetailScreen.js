@@ -13,8 +13,8 @@ function SupportGoalDetailScreen(props) {
     state.supporterGoals.find((goal) => goal.id === id)
   );
 
-  const [shouldShow, setShouldShow] = useState(false);
-  const [text, onChangeText] = useState(goal.goal_description);
+  // const [shouldShow, setShouldShow] = useState(false);
+  // const [text, onChangeText] = useState(goal.goal_description);
   const dispatch = useDispatch();
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState(null);
@@ -22,7 +22,7 @@ function SupportGoalDetailScreen(props) {
   useEffect(() => {}, [dispatch]);
 
   const handleSendSupport = (message) => {
-    console.log(message);
+    // console.log(message);
     postMessage(user.auth_token, goal.id, message);
     setMessage(null);
     Keyboard.dismiss();

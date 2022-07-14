@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
       let user = await AsyncStorage.getItem("user");
       user = JSON.parse(user);
       if (user) {
-        // console.log("user in store", user);
+        console.log("user in store", user);
         setUserInfo(user);
       }
     } catch (e) {

@@ -27,7 +27,7 @@ const emailSupporter = async (email, goal) => {
     body: JSON.stringify(data),
   });
 
-  console.log("email sent", response.ok);
+  // console.log("email sent", response.ok);
 };
 
 export default emailSupporter;

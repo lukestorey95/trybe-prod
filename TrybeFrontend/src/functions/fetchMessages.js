@@ -2,9 +2,9 @@ import getEnvVars from "../../environment";
 const { BACKEND_URL } = getEnvVars();
 
 const fetchMessages = async (token, id) => {
-  console.log(id);
+  // console.log(id);
   const url = `${BACKEND_URL}/goals/${id}/messages/`;
-  console.log(url);
+  // console.log(url);
   try {
     const response = await fetch(url, {
       headers: {
@@ -13,7 +13,7 @@ const fetchMessages = async (token, id) => {
     });
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.log(error);

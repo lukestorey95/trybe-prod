@@ -16,8 +16,8 @@ const supporterGoalSlice = createSlice({
     builder
       // Load goals success
       .addCase(supporterLoadGoals.fulfilled, (state, action) => {
-        console.log("test");
-        console.log("payload", action.payload);
+        // console.log("test");
+        // console.log("payload", action.payload);
         return (state = action.payload.goals);
       });
     // // Upload goal success

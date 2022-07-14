@@ -15,6 +15,10 @@ import {
   Card,
   Title,
   ProgressBar,
+  Avatar,
+  IconButton,
+  Portal,
+  Dialog,
 } from "react-native-paper";
 import { AuthContext } from "../context/AuthContext";
 import { createAlert } from "../functions/createAlert";
@@ -22,6 +26,7 @@ import { createAlert } from "../functions/createAlert";
 import emailSupporter from "../functions/emailSupporter";
 import inviteSupporter from "../functions/connectSupporter";
 import { loadMessages } from "../../store/goals/messages.actions";
+import postMessage from "../functions/postMessage";
 
 function GoalDetailScreen(props) {
   const id = props.route.params.id;
@@ -33,10 +38,17 @@ function GoalDetailScreen(props) {
   const { user } = useContext(AuthContext);
   const [email, setEmail] = useState(null);
   const messages = useSelector((state) => state.messages);
+  const [message, setMessage] = useState(null);
+
+  const [visible, setVisible] = React.useState(false);
+
+  const showDialog = () => setVisible(true);
+
+  const hideDialog = () => setVisible(false);
 
   useEffect(() => {
     function load() {
-      console.log("id", id);
+      // console.log("id", id);
       dispatch(loadMessages({ token: user.auth_token, id: id }));
     }
     load();
@@ -61,7 +73,7 @@ function GoalDetailScreen(props) {
 
   const handleSubmitSupporter = () => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-      emailSupporter(email, gmoal);
+      emailSupporter(email, goal);
       inviteSupporter(user.auth_token, email, goal.id);
       setEmail(null);
       Keyboard.dismiss();
@@ -71,7 +83,7 @@ function GoalDetailScreen(props) {
   };
 
   const updateProgress = () => {
-    console.log("update progress");
+    // console.log("update progress");
     let updatedProgress = parseFloat(goal.progress) + 0.25;
     dispatch(
       editGoal({
@@ -81,6 +93,13 @@ function GoalDetailScreen(props) {
         progress: updatedProgress,
       })
     );
+  };
+
+  const handleSendReply = (message) => {
+    // console.log(message);
+    postMessage(user.auth_token, goal.id, message);
+    setMessage(null);
+    Keyboard.dismiss();
   };
 
   return (
@@ -146,12 +165,51 @@ function GoalDetailScreen(props) {
         </Button>
       </View>
 
+      <Portal>
+        <Dialog visible={visible} onDismiss={hideDialog}>
+          <Dialog.Title>Reply to Supporter</Dialog.Title>
+          <Dialog.Content>
+            <TextInput
+              style={styles.input}
+              value={message}
+              placeholder="enter your message"
+              onChangeText={(text) => setMessage(text)}
+            />
+            <Button
+              mode="contained"
+              onPress={() => {
+                handleSendReply(message);
+                hideDialog();
+              }}
+            >
+              Reply
+            </Button>
+          </Dialog.Content>
+        </Dialog>
+      </Portal>
+
       <Text style={styles.text}>Encouragement from your Trybe</Text>
       <FlatList
         data={messages}
         keyExtractor={({ id }, index) => id}
         renderItem={({ item }) => (
           <Card style={styles.cardStyle}>
+            <Card.Title
+              subtitle={item.sender_username}
+              style={{ fontSize: 1 }}
+              left={(props) => (
+                <Avatar.Icon {...props} icon="face-man-profile" />
+              )}
+              right={(props) => (
+                <IconButton
+                  {...props}
+                  icon="reply"
+                  onPress={() => {
+                    showDialog();
+                  }}
+                />
+              )}
+            />
             <Card.Content>
               <Text>{item.message}</Text>
             </Card.Content>
@@ -190,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   cardStyle: {
-    padding: 10,
+    marginBottom: 10,
   },
   update: {
     marginBottom: 20,

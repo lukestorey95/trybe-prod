@@ -29,7 +29,7 @@ function ViewSupporterGoals(props) {
     <View style={styles.wrapper}>
       {isLoading ? (
         <Text>Loading...</Text>
-      ) : (
+      ) : supporterGoals.length > 0 ? (
         <FlatList
           data={supporterGoals}
           keyExtractor={({ id }, index) => id}
@@ -41,6 +41,8 @@ function ViewSupporterGoals(props) {
             </Card>
           )}
         />
+      ) : (
+        <Text>You're not currently supporting anyone else's goals</Text>
       )}
     </View>
   );

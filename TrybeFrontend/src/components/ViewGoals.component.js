@@ -37,7 +37,10 @@ function ViewGoals(props) {
             <Card style={styles.cardStyle} onPress={() => clickedItem(item.id)}>
               <Card.Content>
                 <Text>{item.goal_description}</Text>
-                <ProgressBar progress={parseFloat(item.progress)} />
+                <ProgressBar
+                  progress={parseFloat(item.progress)}
+                  style={{ marginTop: 10 }}
+                />
               </Card.Content>
             </Card>
           )}

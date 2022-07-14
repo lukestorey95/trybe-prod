@@ -5,7 +5,7 @@ export const loadMessages = createAsyncThunk(
   "messages/loadMessages",
   async ({ token, id }, thunkAPI) => {
     try {
-      console.log("redux action id", id);
+      // console.log("redux action id", id);
       const response = await fetchMessages(token, id);
       return response;
     } catch (err) {

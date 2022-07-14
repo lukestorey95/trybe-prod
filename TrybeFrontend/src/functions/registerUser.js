@@ -21,7 +21,9 @@ const registerUser = async (email, username, password) => {
     if (response.ok) {
       const token = await loginUser(username, password);
       connectSupporter(token.auth_token, data.email, data.id);
-      return token;
+
+      const combinedData = { ...data, ...token };
+      return combinedData;
     }
     throw new Error("Request failed");
   } catch (error) {
