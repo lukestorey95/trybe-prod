@@ -12,8 +12,10 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, username, password) => {
     const user = await registerUser(email, username, password);
-    setUserInfo(user);
-    AsyncStorage.setItem("user", JSON.stringify(user));
+    if (user) {
+      setUserInfo(user);
+      AsyncStorage.setItem("user", JSON.stringify(user));
+    }
   };
 
   const login = async (username, password) => {

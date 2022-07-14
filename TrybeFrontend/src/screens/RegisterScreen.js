@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Keyboard } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { AuthContext } from "../context/AuthContext";
 import Logo from "../components/Logo";
@@ -23,7 +23,7 @@ const RegisterScreen = ({ navigation }) => {
       createAlert("Error!", "username field cannot be empty");
     } else {
       register(email, username, password);
-      // navigation.navigate("Login");
+      Keyboard.dismiss();
     }
   };
 
@@ -70,7 +70,7 @@ const RegisterScreen = ({ navigation }) => {
           <Text>Already have an account? </Text>
           <Button
             icon="account-circle"
-            // onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Login")}
           >
             Login
           </Button>
