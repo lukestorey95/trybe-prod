@@ -24,7 +24,7 @@ import { AuthContext } from "../context/AuthContext";
 import { createAlert } from "../functions/createAlert";
 
 import emailSupporter from "../functions/emailSupporter";
-import inviteSupporter from "../functions/connectSupporter";
+import inviteSupporter from "../functions/inviteSupporter";
 import { loadMessages } from "../../store/goals/messages.actions";
 import postMessage from "../functions/postMessage";
 

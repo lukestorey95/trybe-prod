@@ -15,7 +15,7 @@ async function inviteSupporter(token, email, id) {
   });
   const responseData = await response.json();
   // console.log(responseData);
-  return response.json();
+  return responseData;
 }
 
 export default inviteSupporter;

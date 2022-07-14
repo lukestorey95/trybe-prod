@@ -17,6 +17,8 @@ const RegisterScreen = ({ navigation }) => {
       createAlert("Error!", "email field cannot be empty");
     } else if (password === null) {
       createAlert("Error!", "password field cannot be empty");
+    } else if (password.length < 8) {
+      createAlert("Error!", "password must be at least 8 characters");
     } else if (username === null) {
       createAlert("Error!", "username field cannot be empty");
     } else {

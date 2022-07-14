@@ -2,7 +2,7 @@ import getEnvVars from "../../environment";
 const { BACKEND_URL } = getEnvVars();
 
 async function postMessage(token, id, text) {
-  console.log("did we reach function");
+  // console.log("did we reach function");
   const url = `${BACKEND_URL}/goals/${id}/messages/`;
   const data = { message: text };
   const response = await fetch(url, {
@@ -16,7 +16,7 @@ async function postMessage(token, id, text) {
   });
 
   const responseData = await response.json();
-  console.log(responseData);
+  // console.log(responseData);
   return responseData;
 }
 
