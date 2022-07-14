@@ -25,8 +25,7 @@ import { createAlert } from "../functions/createAlert";
 
 import emailSupporter from "../functions/emailSupporter";
 import inviteSupporter from "../functions/inviteSupporter";
-import { loadMessages } from "../../store/goals/messages.actions";
-import postMessage from "../functions/postMessage";
+import { loadMessages, sendMessage } from "../../store/goals/messages.actions";
 
 function GoalDetailScreen(props) {
   const id = props.route.params.id;
@@ -40,7 +39,7 @@ function GoalDetailScreen(props) {
   const messages = useSelector((state) => state.messages);
   const [message, setMessage] = useState(null);
 
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const showDialog = () => setVisible(true);
 
@@ -48,7 +47,6 @@ function GoalDetailScreen(props) {
 
   useEffect(() => {
     function load() {
-      // console.log("id", id);
       dispatch(loadMessages({ token: user.auth_token, id: id }));
     }
     load();
@@ -83,7 +81,6 @@ function GoalDetailScreen(props) {
   };
 
   const updateProgress = () => {
-    // console.log("update progress");
     let updatedProgress = parseFloat(goal.progress) + 0.25;
     dispatch(
       editGoal({
@@ -96,8 +93,9 @@ function GoalDetailScreen(props) {
   };
 
   const handleSendReply = (message) => {
-    // console.log(message);
-    postMessage(user.auth_token, goal.id, message);
+    dispatch(
+      sendMessage({ token: user.auth_token, id: goal.id, text: message })
+    );
     setMessage(null);
     Keyboard.dismiss();
   };

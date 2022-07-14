@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { SafeAreaView, StyleSheet, Text, View, Keyboard } from "react-native";
-import { removeGoal, editGoal } from "../../store/goals/goals.actions";
+import { sendMessage } from "../../store/goals/messages.actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, TextInput, Card, Title } from "react-native-paper";
 import { AuthContext } from "../context/AuthContext";
 import { createAlert } from "../functions/createAlert";
-import postMessage from "../functions/postMessage";
 
 function SupportGoalDetailScreen(props) {
   const id = props.route.params.id;
@@ -13,8 +12,6 @@ function SupportGoalDetailScreen(props) {
     state.supporterGoals.find((goal) => goal.id === id)
   );
 
-  // const [shouldShow, setShouldShow] = useState(false);
-  // const [text, onChangeText] = useState(goal.goal_description);
   const dispatch = useDispatch();
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState(null);
@@ -23,7 +20,9 @@ function SupportGoalDetailScreen(props) {
 
   const handleSendSupport = (message) => {
     // console.log(message);
-    postMessage(user.auth_token, goal.id, message);
+    dispatch(
+      sendMessage({ token: user.auth_token, id: goal.id, text: message })
+    );
     setMessage(null);
     Keyboard.dismiss();
   };

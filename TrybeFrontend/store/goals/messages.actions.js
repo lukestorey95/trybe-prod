@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import fetchMessages from "../../src/functions/fetchMessages";
+import postMessage from "../../src/functions/postMessage";
 
 export const loadMessages = createAsyncThunk(
   "messages/loadMessages",
@@ -14,17 +15,17 @@ export const loadMessages = createAsyncThunk(
   }
 );
 
-// export const uploadGoal = createAsyncThunk(
-//   "supporterGoals/uploadGoal",
-//   async ({ token, text }, thunkAPI) => {
-//     try {
-//       const response = await postGoal(token, text);
-//       return response;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
-// );
+export const sendMessage = createAsyncThunk(
+  "messages/sendMessage",
+  async ({ token, id, text }, thunkAPI) => {
+    try {
+      const response = await postMessage(token, id, text);
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  }
+);
 
 // export const removeGoal = createAsyncThunk(
 //   "supporterGoals/removeGoal",

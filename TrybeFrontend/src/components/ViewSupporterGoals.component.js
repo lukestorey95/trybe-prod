@@ -42,7 +42,7 @@ function ViewSupporterGoals(props) {
           )}
         />
       ) : (
-        <Text>You're not currently supporting anyone else's goals</Text>
+        <Text>You are not currently supporting anyone else's goals</Text>
       )}
     </View>
   );
