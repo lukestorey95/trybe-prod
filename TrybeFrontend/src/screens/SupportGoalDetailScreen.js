@@ -54,8 +54,18 @@ function SupportGoalDetailScreen(props) {
   return (
     <SafeAreaView style={styles.viewStyle}>
       <Card style={styles.cardStyle}>
+        <Card.Title
+          title="Goal"
+          right={() => (
+            <IconButton
+              icon="hand-heart-outline"
+              onPress={() => {
+                handleSendSupport("🙌");
+              }}
+            />
+          )}
+        />
         <Card.Content>
-          <Title>Goal</Title>
           <Text>{goal.goal_description}</Text>
         </Card.Content>
       </Card>
